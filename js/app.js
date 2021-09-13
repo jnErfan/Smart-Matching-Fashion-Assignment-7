@@ -1,11 +1,18 @@
+// Loading Spinner 
+const spinner = document.getElementById('spinner');
+
 // Set Api Url 
 const loadProducts = () => {
   const searchInput = document.getElementById('input-field');
+  spinner.classList.remove('d-none');
   console.log(searchInput.value);
   const url = `https://fakestoreapi.com/products`;
   fetch(url)
     .then((response) => response.json())
-    .then((data) => showProducts(data));
+    .then((data) => {
+      spinner.classList.add('d-none');
+      showProducts(data)
+    });
 
   //Clear Input
   searchInput.value = '';
@@ -16,17 +23,26 @@ loadProducts();
 const showProducts = (products) => {
   const allProducts = products.map((pd) => pd);
   for (const product of allProducts) {
-
     const div = document.createElement("div");
     div.classList.add("product");
-    div.innerHTML = `<div class="single-product shadow-sm rounded-3">
+    div.innerHTML = `
+    <div class="single-product shadow-sm rounded-3">
       <div>
     <img class="product-image" src=${product.image}></img>
       </div>
-      <h3>${product.title}</h3>
+      <h3>${product.title.slice(0, 25)}</h3>
       <p>Category: ${product.category}</p>
-      <h2>Price: $ ${product.price}</h2>
-      <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-info">Add To Cart</button>
+      <h4>Price: $ ${product.price}</h4>
+      <p>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="far fa-star text-warning"></i>
+              <span class="rating">${product.rating.rate}</span>
+      </p>
+      <p><span class="fw-bold">${product.rating.count}</span> Person Rated</p>
+      <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-info text-light">Add To Cart</button>
       <button onclick="detailsItem('${product.id}')" class="btn btn-success">Details</button></div>
       `;
     document.getElementById("all-products").appendChild(div);
@@ -84,11 +100,7 @@ const updateTaxAndCharge = () => {
   updateTotal()
 };
 
-// const price = document.getElementById('price').innerText;
-// const delevaryCharge = document.getElementById('delivery-charge').innerText;
-// const tax = document.getElementById('total-tax').innerText;
-
-//GrandTotal update function
+//GrandTotal Balance Update 
 const updateTotal = () => {
   const grandTotal = getInputValue("price") + getInputValue("delivery-charge") +
     getInputValue("total-tax");
@@ -112,16 +124,35 @@ const cheackOut = () => {
 
 // Click Item Details
 const detailsItem = id => {
+  spinner.classList.remove('d-none');
   const url = `https://fakestoreapi.com/products/${id}`;
   fetch(url)
     .then(response => response.json())
-    .then(data => detailsUI(data.id));
+    .then(data => {
+      spinner.classList.add('d-none');
+      detailsUI(data)
+    });
 }
 
 const detailsUI = details => {
   const detailsContainer = document.getElementById('detailsContainer');
+  detailsContainer.textContent = '';
   const div = document.createElement('div');
   div.innerHTML = `
+  <div class="shadow-lg pt-5 bg-white text-center p-3 rounded-3">
+        <img width="100px" height="100px" src="${details.image}" alt="">
+        <h4 class="text-warning">${details.title}</h4>
+        <h5><span class="text-info">Price: </span>$${details.price}</h5>
+        <p> <small><span class="text-info fw-bold">Description:</span> <br> ${details.description.slice(0,
+    100)}</small> </p>
+        <h6><span class="text-info">Rate Count:</span> ${details.rating.count}</h6>
+        <button onclick="locationReload()" class="btn btn-danger px-3y-2">Clear</button>
+      </div>
+`;
+  detailsContainer.appendChild(div);
+}
 
-`
+// Reload Web Site 
+const locationReload = () => {
+  location.reload();
 }

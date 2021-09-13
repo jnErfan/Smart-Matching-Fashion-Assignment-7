@@ -36,7 +36,7 @@
         <button type="button" class="btn btn-primary ms-2 px-4 py-2" data-toggle="button" aria-pressed="false"
           autocomplete="off" id="search-btn" onclick="loadProducts()"><i class="fas fa-search"></i> Search</button>
       </div>
-
+      <hr>
     </section>
   </header>
   <!-- Header End  -->
@@ -44,83 +44,96 @@
   <!-- Main Start  -->
   <main class="main">
 
+    <!-- Spinner -->
+    <div id="spinner" class="text-center d-none">
+      <div class="spinner-grow text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-grow text-secondary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-grow text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-grow text-danger" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-grow text-warning" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-grow text-info" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
     <!-- Details Container  -->
-    <section>
-      <div id="detailsContainer" class="details">
+    <div id="detailsContainer" class="d-flex justify-content-center">
 
-        <div class="">
-          <img width="100px" height="100px" src="images/bg-img.jpg" alt="">
-          <h4>Title: Backpack</h4>
-          <h5>Id: 5</h5>
-          <h5>Rating: 4.5</h5>
+    </div>
+
+    <!-- All Product Container And Cart  -->
+    <div class="row row-cols-4">
+
+      <div class="col col-md-9 col-lg-9 col-6">
+
+        <div id="all-products" class="">
+          <!-- All Products Container  -->
 
         </div>
-
       </div>
-    </section>
 
-    <section>
-      <div class="row row-cols-4">
-        <div class="col col-md-9 col-lg-9 col-sm-7">
-          <div id="all-products" class="">
-
-            <!-- All Products Container  -->
-
-          </div>
-        </div>
-
-        <!-- Cart Prices And Detailse -->
-        <div class="col-md-3 col-lg-3 col-sm-5 cart-main">
-          <div class="cart" id="my-cart">
-            <table class="table">
-              <thead>
-                <h1>My-Cart</h1>
-                <tr>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>Total Added-Products:</th>
-                  <td><i class="fas fa-cart-plus"> </i> <span id="total-Products"> 0</span></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <th>Price:</th>
-                  <td>$ <span id="price">0</span></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <th>Delivery-Charge:</th>
-                  <td>$ <span id="delivery-charge">20</span></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <th>Total-Tax:</th>
-                  <td>$ <span id="total-tax">0</span></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <th scope="row">Total</th>
-                  <td colspan="2">$ <span id="total">0</span></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-            <div class="parces text-center">
-              <button onclick="cheackOut()" class="btn btn-primary text-center">Buy Now</button>
-            </div>
+      <!-- Cart Prices And Detailse -->
+      <div class="col col-md-3 col-lg-3 col-6 cart-main">
+        <div class="cart" id="my-cart">
+          <table class="table">
+            <thead>
+              <h1>My-Cart</h1>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Total Added-Products:</th>
+                <td><i class="fas fa-cart-plus"> </i> <span id="total-Products"> 0</span></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th>Price:</th>
+                <td>$ <span id="price">0</span></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th>Delivery-Charge:</th>
+                <td>$ <span id="delivery-charge">20</span></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th>Total-Tax:</th>
+                <td>$ <span id="total-tax">0</span></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Total</th>
+                <td colspan="2">$ <span id="total">0</span></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="parces text-center">
+            <button onclick="cheackOut()" class="btn btn-primary text-center">Buy Now</button>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+
   </main>
   <!-- Main End  -->
 
