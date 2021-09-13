@@ -1,7 +1,7 @@
 // Loading Spinner 
 const spinner = document.getElementById('spinner');
 
-// Set Api Url And Search Input
+// Set Api Url And Search Button And Input.
 const loadProducts = () => {
   const searchInput = document.getElementById('input-field');
   spinner.classList.remove('d-none');
@@ -81,7 +81,7 @@ const setInnerText = (id, value) => {
   document.getElementById(id).innerText = Math.min(value.toFixed(2));
 };
 
-// Update delivery charge and total Tax
+// Update Delivery charge and total Tax
 const updateTaxAndCharge = () => {
   const priceConverted = getInputValue("price");
   if (priceConverted > 200) {
@@ -108,7 +108,7 @@ const updateTotal = () => {
 };
 updateTotal();
 
-// Buy Now Button Handler
+// Buy Now Button Handller
 const cheackOut = () => {
   const promo = prompt('Enter Promo Code For 20% Discount (phero)')
   // Use Promo Code (phero) Get Discount 20% 
