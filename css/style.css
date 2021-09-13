@@ -33,11 +33,11 @@
   transition: 0.6s;
   height: 470px ;
   background-color: #ffff;
+  border-bottom: 5px solid slateblue
 }
 .single-product:hover {
   box-shadow: 4px 4px 7px gray;
-  border-radius: 10px;
-  border: 1px solid cyan;
+  border: 2px solid cyan;
 }
 .product-image {
   width: 150px;
@@ -49,14 +49,17 @@
   margin-top: 20px;
   width: 350px;
   padding: 10px;
+  transition: 0.6s;
   box-shadow: 10px 10px 20px gray;
   border-radius: 5px;
-  background-color: #ffff
+  background-color: #ffff;
+  border-top: 5px solid slateblue;
+  border-bottom: 5px solid slateblue;
 }
-.cart-main {
-  padding-right: 30px;
+.cart:hover {
+  box-shadow: 4px 4px 7px gray;
+  border: 2px solid cyan;
 }
-
 /* Users Rating Design  */
 .rating{
   padding: 3px 10px;
@@ -66,7 +69,6 @@
   font-size: 14px;
   color: #ff112d;
   margin-left: 15px;
- 
 }
 
 /* Mobile Responsive Midea Quary */
