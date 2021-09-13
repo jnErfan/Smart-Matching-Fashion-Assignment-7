@@ -33,7 +33,7 @@ const showProducts = (products) => {
       </div>
       <h3>${product.title.slice(0, 25)}</h3>
       <p>Category: ${product.category}</p>
-      <h4>Price: $ ${product.price}</h4>
+      <h4>Price : $${product.price}</h4>
       <p>
               <i class="fas fa-star text-warning"></i>
               <i class="fas fa-star text-warning"></i>
@@ -44,7 +44,7 @@ const showProducts = (products) => {
       </p>
       <p><span class="fw-bold">${product.rating.count}</span> Person Rated</p>
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-info text-light">Add To Cart</button>
-      <button onclick="detailsItem('${product.id}')" class="btn btn-success">Details</button></div>
+      <button onclick="detailsItem('${product.id}')" class="btn btn-outline-info px-4">Details</button></div>
       `;
     document.getElementById("all-products").appendChild(div);
   }
@@ -96,6 +96,7 @@ const updateTaxAndCharge = () => {
     setInnerText("delivery-charge", 60);
     setInnerText("total-tax", priceConverted * 0.4);
   }
+  // Grand Total Call 
   updateTotal()
 };
 
@@ -110,11 +111,12 @@ updateTotal();
 // Buy Now Button Handler
 const cheackOut = () => {
   const promo = prompt('Enter Promo Code For 20% Discount (phero)')
-  if (promo === 'phero') {
-    confirm('You Got 20% Discount')
+  // Use Promo Code (phero) Get Discount 20% 
+  if (promo.toLowerCase() == 'phero'.toLowerCase()) {
+    confirm('You Got 20% Discount');
     const grandTotal = document.getElementById("total").innerText;
     const discountTotal = (80 / 100) * grandTotal;
-    document.getElementById("total").innerText = discountTotal.toFixed(3)
+    document.getElementById("total").innerText = discountTotal.toFixed(3);
   }
   else if (promo === null) {
     alert('Sure You Want To Cancel')

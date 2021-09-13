@@ -27,13 +27,14 @@
   align-items: center;
   justify-content: center;
 }
+/* Single Card Design  */
 .single-product {
   padding: 10px;
   margin: 20px;
   transition: 0.6s;
   height: 470px ;
   background-color: #ffff;
-  border-bottom: 5px solid slateblue
+  border-bottom: 5px solid slateblue;
 }
 .single-product:hover {
   box-shadow: 4px 4px 7px gray;
@@ -60,6 +61,7 @@
   box-shadow: 4px 4px 7px gray;
   border: 2px solid cyan;
 }
+
 /* Users Rating Design  */
 .rating{
   padding: 3px 10px;
