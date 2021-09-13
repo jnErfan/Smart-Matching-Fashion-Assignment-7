@@ -1,7 +1,7 @@
 // Loading Spinner 
 const spinner = document.getElementById('spinner');
 
-// Set Api Url 
+// Set Api Url And Search Input
 const loadProducts = () => {
   const searchInput = document.getElementById('input-field');
   spinner.classList.remove('d-none');
@@ -14,9 +14,10 @@ const loadProducts = () => {
       showProducts(data)
     });
 
-  //Clear Input
+  //Clear Input Field
   searchInput.value = '';
 };
+// Calling Function
 loadProducts();
 
 // Show All Product In UI 
@@ -55,34 +56,32 @@ let count = 0;
 const addToCart = (id, price) => {
   count = count + 1;
   updatePrice("price", price);
-
+  // Calling Main Price Update Function 
   updateTaxAndCharge();
   document.getElementById("total-Products").innerText = count;
 };
 
-
+// Connvert String To Number Price
 const getInputValue = (id) => {
   const element = document.getElementById(id).innerText;
   const converted = parseFloat(element);
   return converted;
-
 };
 
-// Main Price update function
+// Main Price Update Function 
 const updatePrice = (id, value) => {
   const convertedOldPrice = parseFloat(getInputValue(id));
-  // console.log(convertedOldPrice);
   const convertPrice = value;
   const total = convertedOldPrice + convertPrice;
   document.getElementById(id).innerText = Math.min(total.toFixed(2));
 };
 
-// set innerText function
+// set InnerText function
 const setInnerText = (id, value) => {
   document.getElementById(id).innerText = Math.min(value.toFixed(2));
 };
 
-// update delivery charge and total Tax
+// Update delivery charge and total Tax
 const updateTaxAndCharge = () => {
   const priceConverted = getInputValue("price");
   if (priceConverted > 200) {
@@ -104,15 +103,18 @@ const updateTaxAndCharge = () => {
 const updateTotal = () => {
   const grandTotal = getInputValue("price") + getInputValue("delivery-charge") +
     getInputValue("total-tax");
-  document.getElementById("total").innerText = grandTotal;
+  document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
 updateTotal();
 
-// Buy Now Button 
+// Buy Now Button Handler
 const cheackOut = () => {
   const promo = prompt('Enter Promo Code For 20% Discount (phero)')
   if (promo === 'phero') {
     confirm('You Got 20% Discount')
+    const grandTotal = document.getElementById("total").innerText;
+    const discountTotal = (80 / 100) * grandTotal;
+    document.getElementById("total").innerText = discountTotal.toFixed(3)
   }
   else if (promo === null) {
     alert('Sure You Want To Cancel')
@@ -122,7 +124,7 @@ const cheackOut = () => {
   }
 }
 
-// Click Item Details
+//Single Product Details Api
 const detailsItem = id => {
   spinner.classList.remove('d-none');
   const url = `https://fakestoreapi.com/products/${id}`;
@@ -134,6 +136,7 @@ const detailsItem = id => {
     });
 }
 
+// Product Detailse Showing In UI
 const detailsUI = details => {
   const detailsContainer = document.getElementById('detailsContainer');
   detailsContainer.textContent = '';
@@ -152,7 +155,7 @@ const detailsUI = details => {
   detailsContainer.appendChild(div);
 }
 
-// Reload Web Site 
+// Reload Web Site When Button Click
 const locationReload = () => {
   location.reload();
 }
